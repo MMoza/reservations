@@ -8,6 +8,9 @@ use App\Architectures\A01_MonolithicEloquent\Phase_01\Controllers\ReservationCon
 // A02 - Repository
 use App\Architectures\A02_RepositoryPattern\Phase_01\Controllers\ReservationController as A02ReservationController;
 
+// A03 - Strategy + Polymorphism
+use App\Architectures\A03_StrategyPolymorphism\Phase_01\Controllers\ReservationController as A03ReservationController;
+
 
 Route::prefix('arch_01/v1')->group(function () {
     Route::post('reservation', [A01ReservationController::class, 'store']);
@@ -18,4 +21,9 @@ Route::prefix('arch_01/v1')->group(function () {
 Route::prefix('arch_02/v1')->group(function () {
     Route::post('reservation', [A02ReservationController::class, 'store']);
     Route::get('reservation/{id}', [A02ReservationController::class, 'show']);
+});
+
+Route::prefix('arch_03/v1')->group(function () {
+    Route::post('reservation', [A03ReservationController::class, 'store']);
+    Route::get('reservation/{id}', [A03ReservationController::class, 'show']);
 });
