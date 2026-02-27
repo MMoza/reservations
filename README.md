@@ -1,59 +1,245 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🏗 Arquitectura Comparada – Sistema de Reservas
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este proyecto es un laboratorio práctico para comparar distintas decisiones arquitectónicas aplicadas al mismo dominio funcional.
 
-## About Laravel
+El objetivo no es demostrar que una arquitectura es mejor que otra, sino analizar cómo distintas aproximaciones responden ante el aumento progresivo de complejidad en el dominio.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# 🎯 Objetivos del Proyecto
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Este experimento busca evaluar cómo diferentes estilos arquitectónicos afectan:
 
-## Learning Laravel
+- 📦 Complejidad estructural
+- 🧠 Complejidad cognitiva
+- 🧪 Testeabilidad
+- 🔗 Nivel de acoplamiento
+- 📈 Escalabilidad del diseño
+- 🔄 Capacidad de evolución
+- 🛠 Coste de cambio ante nuevas reglas
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+El dominio funcional se mantiene constante.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**Lo único que cambia es la arquitectura.**
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+# 🧩 Dominio Común
 
-### Premium Partners
+Sistema de reservas multi-producto con:
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+- Productos reservables por fechas
+- Extras opcionales (por noche o fijos)
+- Cálculo de precio total
+- Reglas de negocio progresivamente más complejas
 
-## Contributing
+## 🔌 Endpoints Base
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Cada arquitectura expone exactamente los mismos endpoints, variando únicamente el prefijo y la versión de complejidad:
 
-## Code of Conduct
+### Crear una reserva
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```http
+POST /api/{arquitectura}/v{version}/reservation
+Content-Type: application/json
+```
+### Obtener una reserva
 
-## Security Vulnerabilities
+```http
+GET /api/{arquitectura}/v{version}/reservation/{id}
+Accept: application/json
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Cada arquitectura implementa exactamente la misma funcionalidad externa.
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# 🏗 Arquitecturas Implementadas
+
+## A01 – Monolithic Eloquent
+
+**Active Record puro.**
+
+- Lógica directamente en modelos y/o controlador
+- Uso directo de Eloquent
+- Sin separación entre dominio e infraestructura
+
+Representa el enfoque más común en aplicaciones CRUD.
+
+### Características
+
+- Rápido de desarrollar
+- Baja abstracción
+- Alto acoplamiento al framework
+- Escala mal cuando crecen reglas complejas
+
+---
+
+## A02 – Repository Pattern
+
+Separación entre capas:
+
+- Controller
+- Service (si aplica)
+- Repository Interface
+- Implementación Eloquent
+
+Introduce inversión de dependencias y desacoplamiento de infraestructura.
+
+### Características
+
+- Mayor organización
+- Mejor testabilidad
+- Más código y abstracción
+- Dominio aún potencialmente anémico
+
+---
+
+## A03 – Strategy + Polymorphism
+
+El comportamiento depende del tipo de reserva.
+
+- Reservation abstracta
+- Implementaciones concretas por tipo
+- Estrategias de cálculo de precio
+
+Permite encapsular reglas específicas por contexto.
+
+### Características
+
+- Dominio más expresivo
+- Mejor extensibilidad por tipo
+- Mayor complejidad estructural
+- Más clases y jerarquías
+
+---
+
+## A04 – Decorator Domain
+
+Composición dinámica del comportamiento.
+
+- BaseReservation
+- Decorators para extras y reglas
+- Aplicación real del principio Open/Closed
+
+Permite combinar reglas sin modificar código existente.
+
+### Características
+
+- Máxima flexibilidad
+- Extensión por composición
+- Bajo acoplamiento
+- Mayor complejidad conceptual
+
+---
+
+# 📈 Evolución por Fases
+
+Cada arquitectura evoluciona a través de 4 fases de complejidad creciente.
+
+---
+
+## 🧩 Phase 01 – Cálculo Base
+
+- Base price
+- Extras fijos o por noche
+- Total acumulado
+
+Objetivo: establecer baseline funcional.
+
+---
+
+## 🧩 Phase 02 – Reglas Condicionales
+
+Se introducen reglas transversales:
+
+- Descuentos por volumen
+- Promociones combinadas
+- Precio mínimo garantizado
+- Validaciones dependientes
+
+Aquí empieza a tensionarse el diseño monolítico.
+
+---
+
+## 🧩 Phase 03 – Comportamiento Polimórfico
+
+- Tipos de reserva distintos (ej: hotel, evento)
+- Fórmulas diferentes por tipo
+- Impuestos o comisiones específicas
+- Restricciones según tipo
+
+Aquí se evalúa la capacidad de encapsular comportamiento.
+
+---
+
+## 🧩 Phase 04 – Reglas Combinables y Dinámicas
+
+- Extras que modifican porcentaje total
+- Reglas que afectan a otras reglas
+- Dependencias entre promociones
+- Modificadores encadenables
+
+Se pone a prueba la extensibilidad real del diseño.
+
+---
+
+# 🧪 Criterios de Evaluación
+
+Durante el experimento se analizarán:
+
+- Número de clases
+- Líneas de código
+- Complejidad estructural
+- Facilidad para añadir nuevas reglas
+- Nivel de acoplamiento
+- Dificultad de testing
+- Claridad del modelo de dominio
+- Impacto del crecimiento del dominio en cada arquitectura
+
+---
+
+# 📊 Estado del Proyecto
+
+| Arquitectura              | Phase 01 | Phase 02 | Phase 03 | Phase 04 |
+|---------------------------|----------|----------|----------|----------|
+| A01 Monolithic            | ⬜       | ⬜       | ⬜       | ⬜       |
+| A02 Repository            | ⬜       | ⬜       | ⬜       | ⬜       |
+| A03 Strategy              | ⬜       | ⬜       | ⬜       | ⬜       |
+| A04 Decorator             | ⬜       | ⬜       | ⬜       | ⬜       |
+
+---
+
+# 🎓 Enfoque Filosófico
+
+La arquitectura no es buena ni mala por sí misma.
+
+Es adecuada o inadecuada según:
+
+- La complejidad del dominio
+- La previsión de crecimiento
+- El coste de mantenimiento esperado
+- La necesidad de extensibilidad
+
+Este proyecto busca evidenciar cómo el diseño debe justificarse por el problema, no por preferencia técnica.
+
+---
+
+# 📝 Conclusiones
+
+_(Se completará tras implementar todas las fases.)_
+
+Se analizará:
+
+- Qué arquitectura ofrece mejor equilibrio simplicidad / escalabilidad
+- Cuándo merece la pena sobrearquitecturar
+- Cuándo mantener simplicidad pragmática
+- Qué enfoque es más sostenible a largo plazo
+
+---
+
+# 📌 Nota
+
+Este proyecto tiene fines educativos y de análisis arquitectónico.
+
+No pretende ser una implementación productiva lista para entornos reales, sino un entorno controlado para experimentar con diseño de software y evolución del dominio.
