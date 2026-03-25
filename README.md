@@ -205,8 +205,8 @@ Durante el experimento se analizarán:
 |---------------------------|----------|----------|----------|----------|
 | A01 Monolithic            | ✅       | ⬜       | ⬜       | ⬜       |
 | A02 Repository            | ✅       | ⬜       | ⬜       | ⬜       |
-| A03 Strategy              | ⬜       | ⬜       | ⬜       | ⬜       |
-| A04 Decorator             | ⬜       | ⬜       | ⬜       | ⬜       |
+| A03 Strategy              | ✅       | ⬜       | ⬜       | ⬜       |
+| A04 Decorator             | ✅       | ⬜       | ⬜       | ⬜       |
 
 ---
 

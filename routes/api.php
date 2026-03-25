@@ -11,6 +11,9 @@ use App\Architectures\A02_RepositoryPattern\Phase_01\Controllers\ReservationCont
 // A03 - Strategy + Polymorphism
 use App\Architectures\A03_StrategyPolymorphism\Phase_01\Controllers\ReservationController as A03ReservationController;
 
+// A04 - Decorator Domain
+use App\Architectures\A04_DecoratorDomain\Phase_01\Controllers\ReservationController as A04ReservationController;
+
 
 Route::prefix('arch_01/v1')->group(function () {
     Route::post('reservation', [A01ReservationController::class, 'store']);
@@ -26,4 +29,9 @@ Route::prefix('arch_02/v1')->group(function () {
 Route::prefix('arch_03/v1')->group(function () {
     Route::post('reservation', [A03ReservationController::class, 'store']);
     Route::get('reservation/{id}', [A03ReservationController::class, 'show']);
+});
+
+Route::prefix('arch_04/v1')->group(function () {
+    Route::post('reservation', [A04ReservationController::class, 'store']);
+    Route::get('reservation/{id}', [A04ReservationController::class, 'show']);
 });
