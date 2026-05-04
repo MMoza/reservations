@@ -4,9 +4,13 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-// A02
-use App\Architectures\A02_RepositoryPattern\Phase_01\Repositories\Contracts\ReservationRepositoryInterface as A02ReservationRepositoryInterface;
-use App\Architectures\A02_RepositoryPattern\Phase_01\Repositories\Eloquent\EloquentReservationRepository as A02EloquentReservationRepository;
+// A02 Phase 01
+use App\Architectures\A02_RepositoryPattern\Phase_01\Repositories\Contracts\ReservationRepositoryInterface as A02Phase01RepositoryInterface;
+use App\Architectures\A02_RepositoryPattern\Phase_01\Repositories\Eloquent\EloquentReservationRepository as A02Phase01Repository;
+
+// A02 Phase 02
+use App\Architectures\A02_RepositoryPattern\Phase_02\Repositories\Contracts\ReservationRepositoryInterface as A02Phase02RepositoryInterface;
+use App\Architectures\A02_RepositoryPattern\Phase_02\Repositories\Eloquent\EloquentReservationRepository as A02Phase02Repository;
 
 // A03
 use App\Architectures\A03_StrategyPolymorphism\Phase_01\Repositories\Contracts\ReservationRepositoryInterface as A03ReservationRepositoryInterface;
@@ -20,10 +24,16 @@ class AppServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        // A02 Binding
+        // A02 Phase 01 Binding
         $this->app->bind(
-            A02ReservationRepositoryInterface::class,
-            A02EloquentReservationRepository::class
+            A02Phase01RepositoryInterface::class,
+            A02Phase01Repository::class
+        );
+
+        // A02 Phase 02 Binding
+        $this->app->bind(
+            A02Phase02RepositoryInterface::class,
+            A02Phase02Repository::class
         );
 
         // A03 Binding
