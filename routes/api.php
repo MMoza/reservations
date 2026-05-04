@@ -2,8 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-// A01 - Monolithic
-use App\Architectures\A01_MonolithicEloquent\Phase_01\Controllers\ReservationController as A01ReservationController;
+// A01 - Monolithic Phase 01
+use App\Architectures\A01_MonolithicEloquent\Phase_01\Controllers\ReservationController as A01Phase01Controller;
+
+// A01 - Monolithic Phase 02
+use App\Architectures\A01_MonolithicEloquent\Phase_02\Controllers\ReservationController as A01Phase02Controller;
 
 // A02 - Repository
 use App\Architectures\A02_RepositoryPattern\Phase_01\Controllers\ReservationController as A02ReservationController;
@@ -16,8 +19,13 @@ use App\Architectures\A04_DecoratorDomain\Phase_01\Controllers\ReservationContro
 
 
 Route::prefix('arch_01/v1')->group(function () {
-    Route::post('reservation', [A01ReservationController::class, 'store']);
-    Route::get('reservation/{id}', [A01ReservationController::class, 'show']);
+    Route::post('reservation', [A01Phase01Controller::class, 'store']);
+    Route::get('reservation/{id}', [A01Phase01Controller::class, 'show']);
+});
+
+Route::prefix('arch_01/v2')->group(function () {
+    Route::post('reservation', [A01Phase02Controller::class, 'store']);
+    Route::get('reservation/{id}', [A01Phase02Controller::class, 'show']);
 });
 
 
