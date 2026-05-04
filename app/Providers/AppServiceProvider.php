@@ -20,9 +20,13 @@ use App\Architectures\A03_StrategyPolymorphism\Phase_01\Repositories\Eloquent\El
 use App\Architectures\A03_StrategyPolymorphism\Phase_02\Repositories\Contracts\ReservationRepositoryInterface as A03Phase02RepositoryInterface;
 use App\Architectures\A03_StrategyPolymorphism\Phase_02\Repositories\Eloquent\EloquentReservationRepository as A03Phase02Repository;
 
-// A04
-use App\Architectures\A04_DecoratorDomain\Phase_01\Repositories\Contracts\ReservationRepositoryInterface as A04ReservationRepositoryInterface;
-use App\Architectures\A04_DecoratorDomain\Phase_01\Repositories\Eloquent\EloquentReservationRepository as A04EloquentReservationRepository;
+// A04 Phase 01
+use App\Architectures\A04_DecoratorDomain\Phase_01\Repositories\Contracts\ReservationRepositoryInterface as A04Phase01RepositoryInterface;
+use App\Architectures\A04_DecoratorDomain\Phase_01\Repositories\Eloquent\EloquentReservationRepository as A04Phase01Repository;
+
+// A04 Phase 02
+use App\Architectures\A04_DecoratorDomain\Phase_02\Repositories\Contracts\ReservationRepositoryInterface as A04Phase02RepositoryInterface;
+use App\Architectures\A04_DecoratorDomain\Phase_02\Repositories\Eloquent\EloquentReservationRepository as A04Phase02Repository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -52,10 +56,16 @@ class AppServiceProvider extends ServiceProvider
             A03Phase02Repository::class
         );
 
-        // A04 Binding
+        // A04 Phase 01 Binding
         $this->app->bind(
-            A04ReservationRepositoryInterface::class,
-            A04EloquentReservationRepository::class
+            A04Phase01RepositoryInterface::class,
+            A04Phase01Repository::class
+        );
+
+        // A04 Phase 02 Binding
+        $this->app->bind(
+            A04Phase02RepositoryInterface::class,
+            A04Phase02Repository::class
         );
     }
 
