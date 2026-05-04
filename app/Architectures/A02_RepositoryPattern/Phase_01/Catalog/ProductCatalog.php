@@ -14,7 +14,7 @@ class ProductCatalog
             ],
             2 => [
                 'id' => 2,
-                'name' => 'Habitaci�n premium - Hotel A',
+                'name' => 'Habitación premium - Hotel A',
                 'price_per_night' => 180,
             ],
         ];

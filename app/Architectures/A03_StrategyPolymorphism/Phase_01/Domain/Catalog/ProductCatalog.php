@@ -7,12 +7,12 @@ class ProductCatalog
     private static array $products = [
         1 => [
             'id' => 1,
-            'name' => 'Standard Room',
+            'name' => 'Habitación estándar - Hotel A',
             'price_per_night' => 100,
         ],
         2 => [
             'id' => 2,
-            'name' => 'Deluxe Room',
+            'name' => 'Habitación premium - Hotel A',
             'price_per_night' => 180,
         ],
     ];
@@ -20,15 +20,15 @@ class ProductCatalog
     private static array $extras = [
         10 => [
             'id' => 10,
-            'name' => 'Breakfast',
-            'price' => 15,
+            'name' => 'Desayuno',
+            'price' => 20,
             'type' => 'per_night',
         ],
         11 => [
             'id' => 11,
-            'name' => 'Parking',
-            'price' => 20,
-            'type' => 'fixed',
+            'name' => 'Spa',
+            'price' => 50,
+            'type' => 'per_stay',
         ],
     ];
 
