@@ -495,17 +495,21 @@ flowchart TD
 
     A[Request] --> C[Controller]
 
-    C --> B[Base Price]
+    C --> S[ReservationService]
+    S --> B[Base Price]
 
-    B --> D1[SeasonalDecorator]
-    D1 --> D2[EarlyBookingDecorator]
-    D2 --> D3[VolumeDiscountDecorator]
-    D3 --> D4[TaxesDecorator]
-    D4 --> D5[CommissionDecorator]
+    B --> D1[Seasonal Rule]
+    D1 --> D2[Early Booking Rule]
+    D2 --> D3[Volume Discount]
+    D3 --> D4[Taxes]
+    D4 --> D5[Commission]
 
-    D5 --> SAVE[Save Reservation]
+    D5 --> TOTAL[Final Price]
 
-    SAVE --> R[Response]
+    TOTAL --> SAVE[Persist Reservation]
+    SAVE --> F[Build Response]
+
+    F --> R[Response]
 ```
 
 </details>
