@@ -470,9 +470,10 @@ flowchart TD
 
     A[Request] --> C[Controller]
 
-    C --> D[Domain Service]
+    C --> S[ReservationService]
+    S --> D[Domain Layer]
 
-    D --> F{Product Type}
+    D --> F{Resolve Pricing Strategy}
 
     F -->|Hotel| ST1[HotelPricingStrategy]
     F -->|Event| ST2[EventPricingStrategy]
@@ -480,10 +481,11 @@ flowchart TD
     ST1 --> P1[Calculate Price]
     ST2 --> P2[Calculate Price]
 
-    P1 --> SAVE[Save Reservation]
+    P1 --> SAVE[Persist Reservation]
     P2 --> SAVE
 
-    SAVE --> R[Response]
+    SAVE --> FMT[Build Response]
+    FMT --> R[Response]
 ```
 
 ## 🟣 A04 – Decorator Domain
