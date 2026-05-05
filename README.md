@@ -1,37 +1,40 @@
-<h1 align="center">🏗 Arquitectura Comparada – Sistema de Reservas</h1>
+<p align="center">
+  <img src="./docs/architecture-comparison.png" width="90%">
+</p>
 
 <p align="center">
-  <strong>Explorando decisiones arquitectónicas sobre un mismo dominio funcional</strong>
+  <strong>4 arquitecturas · mismo dominio · mismas reglas · resultados comparables</strong>
 </p>
 
 <p align="center">
   <em>
-    De lo simple a lo complejo: desde implementaciones básicas hasta enfoques avanzados como DDD,
-    CQRS y separación de responsabilidades.
+    Comparativa práctica de cómo distintas arquitecturas escalan ante reglas de negocio crecientes
   </em>
 </p>
 
 ---
 
+<!-- Stack -->
 <p align="center">
-  <a href="https://www.php.net/">
-    <img src="https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php&logoColor=white">
-  </a>
-  <a href="https://laravel.com/">
-    <img src="https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white">
-  </a>
-  <a href="https://phpunit.de/">
-    <img src="https://img.shields.io/badge/PHPUnit-11.5-366488?style=for-the-badge&logo=php&logoColor=white">
-  </a>
-  <a href="https://www.sqlite.org/">
-    <img src="https://img.shields.io/badge/SQLite-DB-003B57?style=for-the-badge&logo=sqlite&logoColor=white">
-  </a>
+  <img src="https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php&logoColor=white">
+  <img src="https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white">
+  <img src="https://img.shields.io/badge/PHPUnit-11.5-366488?style=for-the-badge&logo=php&logoColor=white">
+  <img src="https://img.shields.io/badge/SQLite-DB-003B57?style=for-the-badge&logo=sqlite&logoColor=white">
 </p>
 
+<!-- Arquitecturas -->
 <p align="center">
-  <img src="https://img.shields.io/badge/tests-passing-brightgreen?style=for-the-badge">
+  <img src="https://img.shields.io/badge/A01-Monolithic-blue?style=for-the-badge">
+  <img src="https://img.shields.io/badge/A02-Repository-green?style=for-the-badge">
+  <img src="https://img.shields.io/badge/A03-Strategy-orange?style=for-the-badge">
+  <img src="https://img.shields.io/badge/A04-Decorator-purple?style=for-the-badge">
+</p>
+
+<!-- Status -->
+<p align="center">
+  <img src="https://img.shields.io/badge/tests-78 passing-brightgreen?style=for-the-badge">
+  <img src="https://img.shields.io/badge/assertions-440-blue?style=for-the-badge">
   <img src="https://img.shields.io/badge/status-learning-orange?style=for-the-badge">
-  <img src="https://img.shields.io/badge/focus-architecture-blueviolet?style=for-the-badge">
 </p>
 
 ---
