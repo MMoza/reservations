@@ -547,52 +547,6 @@ flowchart TD
     F --> R[Response]
 ```
 
-## Diagrama de evolución de capas
-
-```mermaid
-flowchart TD
-
-    %% A01
-    subgraph A01 Monolithic
-        M1["Controller + Logic + DB"]
-    end
-
-    %% A02
-    subgraph A02 Repository
-        C2[Controller]
-        S2[Service]
-        R2[Repository]
-        C2 --> S2 --> R2
-    end
-
-    %% A03
-    subgraph A03 Strategy
-        C3[Controller]
-        S3[Service]
-        D3[Domain]
-        ST3[Strategies]
-        C3 --> S3 --> D3 --> ST3
-    end
-
-    %% A04
-    subgraph A04 Decorator
-        C4[Controller]
-        S4[Service]
-        D4[Domain]
-        DE4[Decorators]
-        R4[Repository]
-        C4 --> S4 --> D4 --> DE4 --> R4
-    end
-
-    %% Evolución (forma cuadrada)
-    M1 --> C2
-    C2 --> C3
-    C3 --> C4
-
-    M1 --> C3
-    C2 --> C4
-```
-
 </details>
 
 ---
