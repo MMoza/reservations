@@ -35,7 +35,8 @@
 </p>
 
 ---
-## Tabla de Contenidos
+
+## 📑 Tabla de Contenidos
 
 - [Clonar y Ejecutar](#-clonar-y-ejecutar)
 - [Estructura del Código](#-estructura-del-código)
@@ -74,7 +75,10 @@ php artisan serve
 
 ---
 
-## 📂 Estructura del Código
+<details>
+<summary><strong>📂 Estructura del Código</strong></summary>
+
+<br>
 
 Las 4 arquitecturas viven dentro de `app/Architectures/`, cada una completamente aislada en su propio directorio. Cada fase es una evolución independiente que mantiene los mismos endpoints externos pero implementa la lógica internamente según su patrón arquitectónico.
 
@@ -165,9 +169,14 @@ routes/architectures/
 └── arch_04_decorator.php
 ```
 
+</details>
+
 ---
 
-## 🧩 Dominio
+<details>
+<summary><strong>🧩 Dominio</strong></summary>
+
+<br>
 
 Sistema de reservas multi-producto con cálculo de precio progresivamente más complejo:
 
@@ -191,9 +200,14 @@ Cada arquitectura expone los mismos endpoints con prefijo único:
 | `/api/arch_03/` | Strategy + Polymorphism |
 | `/api/arch_04/` | Decorator Domain |
 
+</details>
+
 ---
 
-## 🏗 Arquitecturas
+<details>
+<summary><strong>🏗 Arquitecturas</strong></summary>
+
+<br>
 
 | | A01 Monolithic | A02 Repository | A03 Strategy | A04 Decorator |
 |---|---|---|---|---|
@@ -205,9 +219,14 @@ Cada arquitectura expone los mismos endpoints con prefijo único:
 | **Fortaleza** | Simplicidad inicial | Organización | Extensibilidad por tipo | Extensibilidad por reglas |
 | **Debilidad** | Colapsa con complejidad | Complejidad inline | Duplica estrategias | Complejidad conceptual |
 
+</details>
+
 ---
 
-## 📈 Fases de Evolución
+<details>
+<summary><strong>📈 Fases de Evolución</strong></summary>
+
+<br>
 
 Cada fase introduce reglas de negocio más complejas sobre la misma base funcional.
 
@@ -218,9 +237,14 @@ Cada fase introduce reglas de negocio más complejas sobre la misma base funcion
 | [Phase 03](docs/phase-03-conclusiones.md) | Comportamiento Polimórfico | Impuestos por tipo (hotel/evento), comisiones, restricción 3 noches evento |
 | [Phase 04](docs/phase-04-conclusiones.md) | Reglas Combinables | Early booking (30/60 días), seasonal surcharge (alta/baja temporada) |
 
+</details>
+
 ---
 
-## 📊 Resultados Finales
+<details>
+<summary><strong>📊 Resultados Finales</strong></summary>
+
+<br>
 
 ### Ranking por criterio (Phase 04)
 
@@ -243,9 +267,14 @@ Cada fase introduce reglas de negocio más complejas sobre la misma base funcion
 
 > La arquitectura no es buena o mala por sí misma. Es adecuada o inadecuada según la complejidad del dominio, la previsión de crecimiento y el coste de mantenimiento esperado.
 
+</details>
+
 ---
 
-## 📚 Documentación Completa
+<details>
+<summary><strong>📚 Documentación Completa</strong></summary>
+
+<br>
 
 ### Implementación por arquitectura
 
@@ -265,9 +294,14 @@ Cada fase introduce reglas de negocio más complejas sobre la misma base funcion
 | **Phase 03** | [Conclusiones](docs/phase-03-conclusiones.md) | [test](tests/Feature/Phase03EquivalenceTest.php) |
 | **Phase 04** | [Conclusiones](docs/phase-04-conclusiones.md) | [test](tests/Feature/Phase04EquivalenceTest.php) |
 
+</details>
+
 ---
 
-## 🧪 Suite de Tests
+<details>
+<summary><strong>🧪 Suite de Tests</strong></summary>
+
+<br>
 
 | Tipo | Tests | Assertions |
 |------|-------|------------|
@@ -286,22 +320,14 @@ Cada fase introduce reglas de negocio más complejas sobre la misma base funcion
 
 Los **equivalence tests** verifican que las 4 arquitecturas producen resultados idénticos con el mismo input, garantizando equivalencia funcional absoluta.
 
+</details>
+
 ---
 
 ## ▶️ Ejecutar Tests
 
 ```bash
-# Todos los tests
 php artisan test
-
-# Una fase específica
-php artisan test tests/Feature/Arch01Phase04ReservationTest.php
-
-# Equivalence tests de una fase
-php artisan test tests/Feature/Phase04EquivalenceTest.php
-
-# Con detalles de fallos
-php artisan test --display-failed
 ```
 
 ---
