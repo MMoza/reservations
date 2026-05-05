@@ -423,27 +423,36 @@ flowchart LR
 ```mermaid
 flowchart TD
 
+    %% A01
     subgraph A01 Monolithic
         C1[Controller]
-        C1 --> L1[Business Logic]
+        C1 --> L1[Inline Business Logic]
     end
 
+    %% A02
     subgraph A02 Repository
         C2[Controller]
         C2 --> S2[Service]
         S2 --> R2[Repository]
     end
 
+    %% A03
     subgraph A03 Strategy
         C3[Controller]
         C3 --> D3[Domain]
-        D3 --> ST3[Strategy]
+        D3 --> F3{Strategy Resolver}
+        F3 --> ST1[HotelPricingStrategy]
+        F3 --> ST2[EventPricingStrategy]
     end
 
+    %% A04
     subgraph A04 Decorator
         C4[Controller]
-        C4 --> D4[Domain]
-        D4 --> DE4[Decorators]
+        C4 --> D4[Base Price]
+        D4 --> DE1[SeasonalDecorator]
+        DE1 --> DE2[EarlyBookingDecorator]
+        DE2 --> DE3[VolumeDiscountDecorator]
+        DE3 --> OUT4[Final Price]
     end
 ```
 
