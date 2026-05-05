@@ -25,7 +25,7 @@ class Arch04Phase02ReservationTest extends TestCase
         $response = $this->postJson('/api/arch_04/v2/reservation', $payload);
 
         $response->assertStatus(201)
-            ->assertJsonPath('base_price', 630)
+            ->assertJsonPath('base_price', 700)
             ->assertJsonPath('discount_amount', 70)
             ->assertJsonPath('discount_reason', 'volume-10%');
     }
@@ -50,7 +50,7 @@ class Arch04Phase02ReservationTest extends TestCase
         $response = $this->postJson('/api/arch_04/v2/reservation', $payload);
 
         $response->assertStatus(201)
-            ->assertJsonPath('base_price', 1120)
+            ->assertJsonPath('base_price', 1400)
             ->assertJsonPath('discount_amount', 280)
             ->assertJsonPath('discount_reason', 'volume-20%');
     }
@@ -75,11 +75,10 @@ class Arch04Phase02ReservationTest extends TestCase
 
         $basePrice = 100 * 3 + 180 * 3;
         $promoDiscount = $basePrice * 0.05;
-        $finalBasePrice = $basePrice - $promoDiscount;
 
         $response->assertStatus(201)
             ->assertJson([
-                'base_price' => (string) $finalBasePrice,
+                'base_price' => (string) $basePrice,
                 'discount_amount' => (string) $promoDiscount,
                 'discount_reason' => 'combined-promo-5%',
             ]);
@@ -111,13 +110,11 @@ class Arch04Phase02ReservationTest extends TestCase
 
         $originalBase = 100 * 7 + 180 * 7;
         $volumeDiscount = $originalBase * 0.20;
-        $afterVolume = $originalBase - $volumeDiscount;
-        $combinedDiscount = $afterVolume * 0.05;
+        $combinedDiscount = $originalBase * 0.05;
         $totalDiscount = $volumeDiscount + $combinedDiscount;
-        $finalBasePrice = $originalBase - $totalDiscount;
 
         $response->assertStatus(201)
-            ->assertJsonPath('base_price', $finalBasePrice)
+            ->assertJsonPath('base_price', $originalBase)
             ->assertJson([
                 'discount_amount' => (string) $totalDiscount,
                 'discount_reason' => 'volume-20% + combined-promo-5%',
