@@ -438,62 +438,85 @@ flowchart LR
     style A04 fill:#9b59b6,color:#fff
 ```
 
-## Flujo interno
+## 🔵 A01 – Monolithic Eloquent
 
 ```mermaid
 flowchart TD
 
-    %% A01
-    subgraph A01 Monolithic
-        C1[Controller]
-        C1 --> L1[Inline Business Logic]
-    end
+    A[Request] --> C[Controller]
 
-    %% A02
-    subgraph A02 Repository
-        C2[Controller]
-        C2 --> S2[Service]
-        S2 --> R2[Repository]
-    end
+    C --> V[Validate Input]
+    V --> Q[Fetch Models (Eloquent)]
+    Q --> L[Inline Business Logic]
+    L --> P[Price Calculation]
+    P --> S[Save Reservation]
 
-    %% A03
-    subgraph A03 Strategy
-        C3[Controller]
-        C3 --> D3[Domain]
-        D3 --> F3{Strategy Resolver}
-        F3 --> ST1[HotelPricingStrategy]
-        F3 --> ST2[EventPricingStrategy]
-    end
-
-    %% A04
-    subgraph A04 Decorator
-        C4[Controller]
-        C4 --> D4[Base Price]
-        D4 --> DE1[SeasonalDecorator]
-        DE1 --> DE2[EarlyBookingDecorator]
-        DE2 --> DE3[VolumeDiscountDecorator]
-        DE3 --> OUT4[Final Price]
-    end
+    S --> R[Response]
 ```
 
-## Equivalencia funcional
+## 🟢 A02 – Repository Pattern
 
 ```mermaid
 flowchart TD
 
-    INPUT[Same Input Request]
+    A[Request] --> C[Controller]
 
-    INPUT --> A01[A01]
-    INPUT --> A02[A02]
-    INPUT --> A03[A03]
-    INPUT --> A04[A04]
+    C --> S[ReservationService]
 
-    A01 --> OUT[Equivalent Output]
-    A02 --> OUT
-    A03 --> OUT
-    A04 --> OUT
+    S --> V[Validate Rules]
+    S --> R1[ReservationRepository]
+    S --> R2[ProductRepository]
 
-    style OUT fill:#2ecc71,color:#fff
+    R1 --> DB[(Database)]
+    R2 --> DB
+
+    S --> P[Price Calculation]
+    P --> SAVE[Persist Reservation]
+
+    SAVE --> RES[Response]
+```
+
+## 🟠 A03 – Strategy Pattern
+
+```mermaid
+flowchart TD
+
+    A[Request] --> C[Controller]
+
+    C --> D[Domain Service]
+
+    D --> F{Product Type}
+
+    F -->|Hotel| ST1[HotelPricingStrategy]
+    F -->|Event| ST2[EventPricingStrategy]
+
+    ST1 --> P1[Calculate Price]
+    ST2 --> P2[Calculate Price]
+
+    P1 --> SAVE[Save Reservation]
+    P2 --> SAVE
+
+    SAVE --> R[Response]
+```
+
+## 🟣 A04 – Decorator Domain
+
+```mermaid
+flowchart TD
+
+    A[Request] --> C[Controller]
+
+    C --> B[Base Price]
+
+    B --> D1[SeasonalDecorator]
+    D1 --> D2[EarlyBookingDecorator]
+    D2 --> D3[VolumeDiscountDecorator]
+    D3 --> D4[TaxesDecorator]
+    D4 --> D5[CommissionDecorator]
+
+    D5 --> SAVE[Save Reservation]
+
+    SAVE --> R[Response]
 ```
 
 </details>
