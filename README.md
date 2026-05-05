@@ -137,6 +137,13 @@ Permite combinar reglas sin modificar código existente.
 
 Cada arquitectura evoluciona a través de 4 fases de complejidad creciente.
 
+Cada fase tiene su propio documento de conclusiones comparativas:
+
+- [Phase 01 – Cálculo Base](docs/phase-01-conclusiones.md)
+- [Phase 02 – Reglas Condicionales](docs/phase-02-conclusiones.md)
+- [Phase 03 – Comportamiento Polimórfico](docs/phase-03-conclusiones.md)
+- [Phase 04 – Reglas Combinables y Dinámicas](docs/phase-04-conclusiones.md)
+
 ---
 
 ## 🧩 Phase 01 – Cálculo Base
@@ -203,31 +210,40 @@ Durante el experimento se analizarán:
 
 | Arquitectura              | Phase 01 | Phase 02 | Phase 03 | Phase 04 |
 |---------------------------|----------|----------|----------|----------|
-| A01 Monolithic            | ✅       | ✅       | ⬜       | ⬜       |
-| A02 Repository            | ✅       | ✅       | ⬜       | ⬜       |
-| A03 Strategy              | ✅       | ✅       | ⬜       | ⬜       |
-| A04 Decorator             | ✅       | ✅       | ⬜       | ⬜       |
+| A01 Monolithic            | ✅       | ✅       | ✅       | ✅       |
+| A02 Repository            | ✅       | ✅       | ✅       | ✅       |
+| A03 Strategy              | ✅       | ✅       | ✅       | ✅       |
+| A04 Decorator             | ✅       | ✅       | ✅       | ✅       |
+
+Todas las fases implementadas. 77 tests, 376 assertions.
 
 ---
 
-# 🎓 Enfoque Filosófico
+# 📚 Documentación
 
-La arquitectura no es buena ni mala por sí misma.
+### Documentos por fase (una por arquitectura)
 
-Es adecuada o inadecuada según:
+| | A01 Monolithic | A02 Repository | A03 Strategy | A04 Decorator |
+|---|---|---|---|---|
+| Phase 01 | [doc](docs/phase-01/a01-monolithic.md) | [doc](docs/phase-01/a02-repository.md) | [doc](docs/phase-01/a03-strategy.md) | [doc](docs/phase-01/a04-decorator.md) |
+| Phase 02 | [doc](docs/phase-02/a01-monolithic.md) | [doc](docs/phase-02/a02-repository.md) | [doc](docs/phase-02/a03-strategy.md) | [doc](docs/phase-02/a04-decorator.md) |
+| Phase 03 | [doc](docs/phase-03/a01-monolithic.md) | [doc](docs/phase-03/a02-repository.md) | [doc](docs/phase-03/a03-strategy.md) | [doc](docs/phase-03/a04-decorator.md) |
+| Phase 04 | [doc](docs/phase-04/a01-monolithic.md) | [doc](docs/phase-04/a02-repository.md) | [doc](docs/phase-04/a03-strategy.md) | [doc](docs/phase-04/a04-decorator.md) |
 
-- La complejidad del dominio
-- La previsión de crecimiento
-- El coste de mantenimiento esperado
-- La necesidad de extensibilidad
+### Documentos de conclusiones por fase (comparativa)
 
-Este proyecto busca evidenciar cómo el diseño debe justificarse por el problema, no por preferencia técnica.
+- [Phase 01](docs/phase-01-conclusiones.md)
+- [Phase 02](docs/phase-02-conclusiones.md)
+- [Phase 03](docs/phase-03-conclusiones.md)
+- [Phase 04](docs/phase-04-conclusiones.md)
 
 ---
 
 # 📝 Conclusiones
 
 _(Se completará tras implementar todas las fases.)_
+
+La arquitectura no es buena ni mala por sí misma. Es adecuada o inadecuada según la complejidad del dominio, la previsión de crecimiento, el coste de mantenimiento esperado y la necesidad de extensibilidad. Este proyecto busca evidenciar cómo el diseño debe justificarse por el problema, no por preferencia técnica.
 
 Se analizará:
 
