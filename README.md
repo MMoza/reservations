@@ -1,35 +1,40 @@
-# 🏗 Arquitectura Comparada – Sistema de Reservas
+<h1 align="center">🏗 Arquitectura Comparada – Sistema de Reservas</h1>
 
 <p align="center">
-  <a href="https://www.php.net/">
-    <img src="https://img.shields.io/badge/PHP-8.2-777BB4?logo=php&logoColor=white">
-  </a>
-  <a href="https://laravel.com/">
-    <img src="https://img.shields.io/badge/Laravel-12.x-FF2D20?logo=laravel&logoColor=white">
-  </a>
-  <a href="https://phpunit.de/">
-    <img src="https://img.shields.io/badge/PHPUnit-11.5-366488?logo=php&logoColor=white">
-  </a>
-  <a href="https://www.sqlite.org/">
-    <img src="https://img.shields.io/badge/SQLite-Database-003B57?logo=sqlite&logoColor=white">
-  </a>
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/tests-passing-brightgreen">
-  <img src="https://img.shields.io/badge/status-learning-orange">
-  <img src="https://img.shields.io/badge/focus-architecture-blueviolet">
+  <strong>Explorando decisiones arquitectónicas sobre un mismo dominio funcional</strong>
 </p>
 
 <p align="center">
   <em>
-    Laboratorio práctico para comparar cómo distintas decisiones arquitectónicas 
-    responden al mismo dominio funcional, con complejidad progresiva.
+    De lo simple a lo complejo: desde implementaciones básicas hasta enfoques avanzados como DDD,
+    CQRS y separación de responsabilidades.
   </em>
 </p>
 
 ---
 
+<p align="center">
+  <a href="https://www.php.net/">
+    <img src="https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php&logoColor=white">
+  </a>
+  <a href="https://laravel.com/">
+    <img src="https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white">
+  </a>
+  <a href="https://phpunit.de/">
+    <img src="https://img.shields.io/badge/PHPUnit-11.5-366488?style=for-the-badge&logo=php&logoColor=white">
+  </a>
+  <a href="https://www.sqlite.org/">
+    <img src="https://img.shields.io/badge/SQLite-DB-003B57?style=for-the-badge&logo=sqlite&logoColor=white">
+  </a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/tests-passing-brightgreen?style=for-the-badge">
+  <img src="https://img.shields.io/badge/status-learning-orange?style=for-the-badge">
+  <img src="https://img.shields.io/badge/focus-architecture-blueviolet?style=for-the-badge">
+</p>
+
+---
 ## Tabla de Contenidos
 
 - [Clonar y Ejecutar](#-clonar-y-ejecutar)
