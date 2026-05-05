@@ -447,18 +447,24 @@ flowchart TD
 
     A[Request] --> C[Controller]
 
-    C --> S[ReservationService]
+    %% Application Layer
+    subgraph Application Layer
+        C --> S[ReservationService]
+        S --> V[Validate Business Rules]
+        S --> P[Calculate Price]
+    end
 
-    S --> V[Validate Business Rules]
-    S --> R1[ReservationRepository]
-    S --> R2[ProductRepository]
+    %% Infrastructure Layer
+    subgraph Infrastructure
+        S --> R1[ReservationRepository]
+        S --> R2[ProductRepository]
 
-    R1 --> DB[(Database)]
-    R2 --> DB
+        R1 --> DB[(Database)]
+        R2 --> DB
+    end
 
-    S --> P[Calculate Price]
+    %% Persist + Response
     P --> SAVE[Persist Reservation]
-
     SAVE --> F[Build Response]
     F --> RES[Response]
 ```
