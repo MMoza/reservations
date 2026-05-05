@@ -446,7 +446,7 @@ flowchart TD
     A[Request] --> C[Controller]
 
     C --> V[Validate Input]
-    V --> Q[Fetch Models (Eloquent)]
+    V --> Q[Fetch Models - Eloquent]
     Q --> L[Inline Business Logic]
     L --> P[Price Calculation]
     P --> S[Save Reservation]
