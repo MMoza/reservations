@@ -495,20 +495,33 @@ flowchart TD
 
     A[Request] --> C[Controller]
 
-    C --> S[ReservationService]
-    S --> B[Base Price]
+    %% Application Layer
+    subgraph Application Layer
+        C --> S[ReservationService]
+        S --> ORQ[Orchestrate Reservation]
+    end
 
-    B --> D1[Seasonal Rule]
-    D1 --> D2[Early Booking Rule]
-    D2 --> D3[Volume Discount]
-    D3 --> D4[Taxes]
-    D4 --> D5[Commission]
+    %% Domain Layer
+    subgraph Domain Layer (Pure)
+        ORQ --> B[Base Price]
 
-    D5 --> TOTAL[Final Price]
+        B --> D1[SeasonalDecorator]
+        D1 --> D2[EarlyBookingDecorator]
+        D2 --> D3[VolumeDiscountDecorator]
+        D3 --> D4[TaxesDecorator]
+        D4 --> D5[CommissionDecorator]
 
-    TOTAL --> SAVE[Persist Reservation]
-    SAVE --> F[Build Response]
+        D5 --> TOTAL[Final Price]
+    end
 
+    %% Infrastructure
+    subgraph Infrastructure
+        TOTAL --> SAVE[Repository Save]
+        SAVE --> DB[(Database)]
+    end
+
+    %% Response
+    DB --> F[Build Response]
     F --> R[Response]
 ```
 
