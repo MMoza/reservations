@@ -554,65 +554,43 @@ flowchart TD
 
     %% A01
     subgraph A01 Monolithic
-        subgraph Monolithic Layer
-            M1["Controller + Logic + DB"]
-        end
+        M1["Controller + Logic + DB"]
     end
 
     %% A02
     subgraph A02 Repository
-        subgraph Application
-            C2[Controller]
-            S2[Service]
-            C2 --> S2
-        end
-
-        subgraph Infrastructure
-            R2[Repository]
-        end
-
-        S2 --> R2
+        C2[Controller]
+        S2[Service]
+        R2[Repository]
+        C2 --> S2 --> R2
     end
 
     %% A03
     subgraph A03 Strategy
-        subgraph Application
-            C3[Controller]
-            S3[Service]
-            C3 --> S3
-        end
-
-        subgraph Domain
-            ST3[Strategies]
-        end
-
-        S3 --> ST3
+        C3[Controller]
+        S3[Service]
+        D3[Domain]
+        ST3[Strategies]
+        C3 --> S3 --> D3 --> ST3
     end
 
     %% A04
     subgraph A04 Decorator
-        subgraph Application
-            C4[Controller]
-            S4[Service]
-            C4 --> S4
-        end
-
-        subgraph Domain
-            DE4[Decorators]
-        end
-
-        subgraph Infrastructure
-            R3[Repository]
-        end
-
-        S4 --> DE4 --> R3
+        C4[Controller]
+        S4[Service]
+        D4[Domain]
+        DE4[Decorators]
+        R4[Repository]
+        C4 --> S4 --> D4 --> DE4 --> R4
     end
 
     %% Evolución (forma cuadrada)
     M1 --> C2
-    R2 --> C3
-    ST3 --> DE4
-    DE4 --> C4
+    C2 --> C3
+    C3 --> C4
+
+    M1 --> C3
+    C2 --> C4
 ```
 
 </details>
