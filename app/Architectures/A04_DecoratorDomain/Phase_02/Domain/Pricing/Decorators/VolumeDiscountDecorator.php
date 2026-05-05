@@ -17,9 +17,7 @@ class VolumeDiscountDecorator extends ReservationDecorator
 
     public function basePrice(): float
     {
-        $ownDiscount = $this->reservation->basePrice() * $this->discountPercentage;
-
-        return $this->reservation->basePrice() - $ownDiscount;
+        return $this->reservation->basePrice();
     }
 
     public function discountAmount(): float
