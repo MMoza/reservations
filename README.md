@@ -568,9 +568,8 @@ flowchart TD
     subgraph A03 Strategy
         C3[Controller]
         S3[Service]
-        D3[Domain]
         ST3[Strategies]
-        C3 --> S3 --> D3 --> ST3
+        C3 --> S3 --> ST3
     end
 
     subgraph A04 Decorator
@@ -578,13 +577,14 @@ flowchart TD
         S4[Service]
         D4[Domain]
         DE4[Decorators]
-        C4 --> S4 --> D4 --> DE4
+        R3[Repository]
+        C4 --> S4 --> DE4 --> R3
     end
 
     %% Layout connections (square shape)
     M1 --> C2
 
-    R2 --> ST3
+    R2 --> C3
     ST3 --> DE4
 
     DE4 --> C4
