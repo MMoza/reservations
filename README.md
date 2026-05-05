@@ -1,12 +1,16 @@
 # 🏗 Arquitectura Comparada – Sistema de Reservas
 
+[![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?logo=php&logoColor=white)](https://www.php.net/)
+[![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?logo=laravel&logoColor=white)](https://laravel.com/)
+[![PHPUnit](https://img.shields.io/badge/PHPUnit-11.5-366488?logo=php&logoColor=white)](https://phpunit.de/)
+[![SQLite](https://img.shields.io/badge/SQLite-Database-003B57?logo=sqlite&logoColor=white)](https://www.sqlite.org/)
+
 > Laboratorio práctico para comparar cómo distintas decisiones arquitectónicas responden al mismo dominio funcional, con complejidad progresiva.
 
 ---
 
 ## Tabla de Contenidos
 
-- [Stack Tecnológico](#-stack-tecnológico)
 - [Clonar y Ejecutar](#-clonar-y-ejecutar)
 - [Estructura del Código](#-estructura-del-código)
 - [Dominio](#-dominio)
@@ -15,17 +19,6 @@
 - [Resultados Finales](#-resultados-finales)
 - [Documentación Completa](#-documentación-completa)
 - [Suite de Tests](#-suite-de-tests)
-
----
-
-## 💻 Stack Tecnológico
-
-| Tecnología | Versión |
-|-----------|---------|
-| PHP | ^8.2 |
-| Laravel | ^12.0 |
-| PHPUnit | ^11.5.3 |
-| Base de datos | SQLite (por defecto) |
 
 ---
 
