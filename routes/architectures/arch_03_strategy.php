@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Architectures\A03_StrategyPolymorphism\Phase_01\Controllers\ReservationController as A03Phase01Controller;
 use App\Architectures\A03_StrategyPolymorphism\Phase_02\Controllers\ReservationController as A03Phase02Controller;
 use App\Architectures\A03_StrategyPolymorphism\Phase_03\Controllers\ReservationController as A03Phase03Controller;
+use App\Architectures\A03_StrategyPolymorphism\Phase_04\Controllers\ReservationController as A03Phase04Controller;
 
 Route::prefix('arch_03/v1')->group(function () {
     Route::post('reservation', [A03Phase01Controller::class, 'store']);
@@ -19,4 +20,9 @@ Route::prefix('arch_03/v2')->group(function () {
 Route::prefix('arch_03/v3')->group(function () {
     Route::post('reservation', [A03Phase03Controller::class, 'store']);
     Route::get('reservation/{id}', [A03Phase03Controller::class, 'show']);
+});
+
+Route::prefix('arch_03/v4')->group(function () {
+    Route::post('reservation', [A03Phase04Controller::class, 'store']);
+    Route::get('reservation/{id}', [A03Phase04Controller::class, 'show']);
 });

@@ -40,6 +40,18 @@ use App\Architectures\A04_DecoratorDomain\Phase_02\Repositories\Eloquent\Eloquen
 use App\Architectures\A04_DecoratorDomain\Phase_03\Repositories\Contracts\ReservationRepositoryInterface as A04Phase03RepositoryInterface;
 use App\Architectures\A04_DecoratorDomain\Phase_03\Repositories\Eloquent\EloquentReservationRepository as A04Phase03Repository;
 
+// A02 Phase 04
+use App\Architectures\A02_RepositoryPattern\Phase_04\Repositories\Contracts\ReservationRepositoryInterface as A02Phase04RepositoryInterface;
+use App\Architectures\A02_RepositoryPattern\Phase_04\Repositories\Eloquent\EloquentReservationRepository as A02Phase04Repository;
+
+// A03 Phase 04
+use App\Architectures\A03_StrategyPolymorphism\Phase_04\Repositories\Contracts\ReservationRepositoryInterface as A03Phase04RepositoryInterface;
+use App\Architectures\A03_StrategyPolymorphism\Phase_04\Repositories\Eloquent\EloquentReservationRepository as A03Phase04Repository;
+
+// A04 Phase 04
+use App\Architectures\A04_DecoratorDomain\Phase_04\Repositories\Contracts\ReservationRepositoryInterface as A04Phase04RepositoryInterface;
+use App\Architectures\A04_DecoratorDomain\Phase_04\Repositories\Eloquent\EloquentReservationRepository as A04Phase04Repository;
+
 class AppServiceProvider extends ServiceProvider
 {
     public function register(): void
@@ -96,6 +108,24 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             A04Phase03RepositoryInterface::class,
             A04Phase03Repository::class
+        );
+
+        // A02 Phase 04 Binding
+        $this->app->bind(
+            A02Phase04RepositoryInterface::class,
+            A02Phase04Repository::class
+        );
+
+        // A03 Phase 04 Binding
+        $this->app->bind(
+            A03Phase04RepositoryInterface::class,
+            A03Phase04Repository::class
+        );
+
+        // A04 Phase 04 Binding
+        $this->app->bind(
+            A04Phase04RepositoryInterface::class,
+            A04Phase04Repository::class
         );
     }
 
