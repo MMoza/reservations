@@ -502,7 +502,7 @@ flowchart TD
     end
 
     %% Domain Layer
-    subgraph Domain Layer (Pure)
+    subgraph Domain Layer - Pure
         ORQ --> B[Base Price]
 
         B --> D1[SeasonalDecorator]
