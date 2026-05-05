@@ -430,12 +430,15 @@ flowchart TD
 
     A[Request] --> C[Controller]
 
-    C --> V[Validate Request]
-    V --> Q[Load Models  - Eloquent]
-    Q --> L[Apply Business Rules]
-    L --> P[Calculate Total Price]
-    P --> S[Persist Reservation]
-    S --> F[Format Response]
+    %% Monolithic Layer
+    subgraph Monolithic Layer (Everything Together)
+        C --> V[Validate Request]
+        V --> Q[Load Models - Eloquent]
+        Q --> L[Apply Business Rules]
+        L --> P[Calculate Total Price]
+        P --> S[Persist Reservation]
+        S --> F[Format Response]
+    end
 
     F --> R[Response]
 ```
