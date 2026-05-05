@@ -64,6 +64,51 @@
   <img src="https://img.shields.io/badge/assertions-506-blue">
   <img src="https://img.shields.io/badge/status-learning-orange">
 </p>
+<br>
+<br>
+
+---
+
+## 🔄 Misma request, distintas arquitecturas
+
+```mermaid
+flowchart LR
+
+    A[Client Request] --> B[/POST /reservation/]
+
+    B --> A01
+    B --> A02
+    B --> A03
+    B --> A04
+
+    subgraph Monolithic
+        A01[Controller + Logic]
+    end
+
+    subgraph Repository
+        A02[Controller → Service → Repository]
+    end
+
+    subgraph Strategy
+        A03[Controller → Domain → Strategy]
+    end
+
+    subgraph Decorator
+        A04[Controller → Domain → Decorators]
+    end
+
+    A01 --> OUT
+    A02 --> OUT
+    A03 --> OUT
+    A04 --> OUT
+
+    OUT[Equivalent Result]
+
+    style A01 fill:#3498db,color:#fff
+    style A02 fill:#2ecc71,color:#fff
+    style A03 fill:#e67e22,color:#fff
+    style A04 fill:#9b59b6,color:#fff
+```
 
 ---
 
@@ -77,6 +122,7 @@
 - [Resultados Finales](#-resultados-finales)
 - [Documentación Completa](#-documentación-completa)
 - [Suite de Tests](#-suite-de-tests)
+- [Diagramas de Flujo](#-tabla-de-contenidos)
 
 ---
 
@@ -354,7 +400,76 @@ Los **equivalence tests** verifican que las 4 arquitecturas producen resultados 
 </details>
 
 ---
+<details>
+<summary><strong>🔄 Diagramas de Flujo (ver más)</strong></summary>
 
+## Evolución de complejidad
+
+```mermaid
+flowchart LR
+
+    A01[Monolithic] --> A02[Repository]
+    A02 --> A03[Strategy]
+    A03 --> A04[Decorator]
+
+    style A01 fill:#3498db,color:#fff
+    style A02 fill:#2ecc71,color:#fff
+    style A03 fill:#e67e22,color:#fff
+    style A04 fill:#9b59b6,color:#fff
+```
+
+## Flujo interno
+
+```mermaid
+flowchart TD
+
+    subgraph A01 Monolithic
+        C1[Controller]
+        C1 --> L1[Business Logic]
+    end
+
+    subgraph A02 Repository
+        C2[Controller]
+        C2 --> S2[Service]
+        S2 --> R2[Repository]
+    end
+
+    subgraph A03 Strategy
+        C3[Controller]
+        C3 --> D3[Domain]
+        D3 --> ST3[Strategy]
+    end
+
+    subgraph A04 Decorator
+        C4[Controller]
+        C4 --> D4[Domain]
+        D4 --> DE4[Decorators]
+    end
+```
+
+## Equivalencia funcional
+
+```mermaid
+flowchart TD
+
+    INPUT[Same Input Request]
+
+    INPUT --> A01[A01]
+    INPUT --> A02[A02]
+    INPUT --> A03[A03]
+    INPUT --> A04[A04]
+
+    A01 --> OUT[Equivalent Output]
+    A02 --> OUT
+    A03 --> OUT
+    A04 --> OUT
+
+    style OUT fill:#2ecc71,color:#fff
+```
+
+</details>
+
+---
 ## ▶️ Ejecutar Tests
 
 ```bash
