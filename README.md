@@ -74,36 +74,56 @@
 ```mermaid
 flowchart LR
 
+    %% Entrada
     A[Client Request] --> B[/POST /reservation/]
 
+    %% Split
     B --> A01
     B --> A02
     B --> A03
     B --> A04
 
-    subgraph Monolithic
-        A01[Controller + Logic]
+    %% A01
+    subgraph A01 Monolithic
+        A01 --> C1[Controller]
+        C1 --> L1[Inline Logic]
     end
 
-    subgraph Repository
-        A02[Controller → Service → Repository]
+    %% A02
+    subgraph A02 Repository
+        A02 --> C2[Controller]
+        C2 --> S2[Service]
+        S2 --> R2[Repository]
     end
 
-    subgraph Strategy
-        A03[Controller → Domain → Strategy]
+    %% A03
+    subgraph A03 Strategy
+        A03 --> C3[Controller]
+        C3 --> D3[Domain]
+        D3 --> F3{Resolver}
+        F3 --> ST1[Hotel Strategy]
+        F3 --> ST2[Event Strategy]
     end
 
-    subgraph Decorator
-        A04[Controller → Domain → Decorators]
+    %% A04
+    subgraph A04 Decorator
+        A04 --> C4[Controller]
+        C4 --> D4[Base Price]
+        D4 --> DE1[Seasonal]
+        DE1 --> DE2[Early Booking]
+        DE2 --> DE3[Volume]
     end
 
-    A01 --> OUT
-    A02 --> OUT
-    A03 --> OUT
-    A04 --> OUT
+    %% Output
+    L1 --> OUT
+    R2 --> OUT
+    ST1 --> OUT
+    ST2 --> OUT
+    DE3 --> OUT
 
     OUT[Equivalent Result]
 
+    %% Styles
     style A01 fill:#3498db,color:#fff
     style A02 fill:#2ecc71,color:#fff
     style A03 fill:#e67e22,color:#fff
