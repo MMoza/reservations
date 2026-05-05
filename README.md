@@ -470,21 +470,34 @@ flowchart TD
 
     A[Request] --> C[Controller]
 
-    C --> S[ReservationService]
-    S --> D[Domain Layer]
+    %% Application Layer
+    subgraph Application Layer
+        C --> S[ReservationService]
+        S --> ORQ[Orchestrate Reservation]
+    end
 
-    D --> F{Resolve Pricing Strategy}
+    %% Domain Layer
+    subgraph Domain Layer
+        ORQ --> F{Resolve Pricing Strategy}
 
-    F -->|Hotel| ST1[HotelPricingStrategy]
-    F -->|Event| ST2[EventPricingStrategy]
+        F -->|Hotel| ST1[HotelPricingStrategy]
+        F -->|Event| ST2[EventPricingStrategy]
 
-    ST1 --> P1[Calculate Price]
-    ST2 --> P2[Calculate Price]
+        ST1 --> P1[Calculate Price]
+        ST2 --> P2[Calculate Price]
 
-    P1 --> SAVE[Persist Reservation]
-    P2 --> SAVE
+        P1 --> TOTAL[Final Price]
+        P2 --> TOTAL
+    end
 
-    SAVE --> FMT[Build Response]
+    %% Infrastructure
+    subgraph Infrastructure
+        TOTAL --> SAVE[ReservationRepository]
+        SAVE --> DB[(Database)]
+    end
+
+    %% Response
+    DB --> FMT[Build Response]
     FMT --> R[Response]
 ```
 
