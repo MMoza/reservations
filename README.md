@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <strong>4 arquitecturas · mismo dominio · mismas reglas · resultados comparables</strong>
+  <strong>4 arquitecturas · mismo dominio · mismas reglas · resultados equivalentes</strong>
 </p>
 
 <p align="center">
@@ -15,26 +15,54 @@
 ---
 
 <!-- Stack -->
+<p align="center"><strong>🧱 Stack Tecnológico</strong></p>
+<p align="center"><em>Tecnologías y herramientas que sustentan el proyecto</em></p>
+
 <p align="center">
-  <img src="https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php&logoColor=white">
-  <img src="https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white">
-  <img src="https://img.shields.io/badge/PHPUnit-11.5-366488?style=for-the-badge&logo=php&logoColor=white">
-  <img src="https://img.shields.io/badge/SQLite-DB-003B57?style=for-the-badge&logo=sqlite&logoColor=white">
+  <a href="https://www.php.net/" title="PHP 8.4">
+    <img src="https://img.shields.io/badge/PHP-8.4-777BB4?logo=php&logoColor=white">
+  </a>
+  <a href="https://laravel.com/docs" title="Laravel 13 Framework">
+    <img src="https://img.shields.io/badge/Laravel-13.x-FF2D20?logo=laravel&logoColor=white">
+  </a>
+  <a href="https://phpunit.de/documentation.html" title="PHPUnit Testing Framework">
+    <img src="https://img.shields.io/badge/PHPUnit-11.5-366488?logo=php&logoColor=white">
+  </a>
+  <a href="https://www.sqlite.org/docs.html" title="SQLite Database">
+    <img src="https://img.shields.io/badge/SQLite-DB-003B57?logo=sqlite&logoColor=white">
+  </a>
 </p>
+
 
 <!-- Arquitecturas -->
+<p align="center"><strong>🏗 Arquitecturas</strong></p>
+<p align="center"><em>Distintas implementaciones de la misma lógica de negocio</em></p>
+
 <p align="center">
-  <img src="https://img.shields.io/badge/A01-Monolithic-blue?style=for-the-badge">
-  <img src="https://img.shields.io/badge/A02-Repository-green?style=for-the-badge">
-  <img src="https://img.shields.io/badge/A03-Strategy-orange?style=for-the-badge">
-  <img src="https://img.shields.io/badge/A04-Decorator-purple?style=for-the-badge">
+  <a href="https://github.com/MMoza/reservations/tree/main/app/Architectures/A01_MonolithicEloquent" title="A01 - Monolithic">
+    <img src="https://img.shields.io/badge/A01-Monolithic-blue">
+  </a>
+  <a href="https://github.com/MMoza/reservations/tree/main/app/Architectures/A02_RepositoryPattern" title="A02 - Repository">
+    <img src="https://img.shields.io/badge/A02-Repository-green">
+  </a>
+  <a href="https://github.com/MMoza/reservations/tree/main/app/Architectures/A03_StrategyPolymorphism" title="A03 - Strategy">
+    <img src="https://img.shields.io/badge/A03-Strategy-orange">
+  </a>
+  <a href="https://github.com/MMoza/reservations/tree/main/app/Architectures/A04_DecoratorDomain" title="A04 - Decorator">
+    <img src="https://img.shields.io/badge/A04-Decorator-purple">
+  </a>
 </p>
 
-<!-- Status -->
+<!-- CI + Métricas -->
+<p align="center"><strong>🧪 Calidad & Estado</strong></p>
+<p align="center"><em>Validado mediante tests automatizados y CI</em></p>
+
 <p align="center">
-  <img src="https://img.shields.io/badge/tests-78 passing-brightgreen?style=for-the-badge">
-  <img src="https://img.shields.io/badge/assertions-440-blue?style=for-the-badge">
-  <img src="https://img.shields.io/badge/status-learning-orange?style=for-the-badge">
+  <a href="https://github.com/MMoza/reservations/actions" title="CI Tests">
+    <img src="https://github.com/MMoza/reservations/actions/workflows/tests.yml/badge.svg?label=CI">
+  </a>
+  <img src="https://img.shields.io/badge/assertions-506-blue">
+  <img src="https://img.shields.io/badge/status-learning-orange">
 </p>
 
 ---
