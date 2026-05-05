@@ -583,13 +583,11 @@ flowchart TD
 
     %% Layout connections (square shape)
     M1 --> C2
-    C2 --> R2
 
     R2 --> ST3
     ST3 --> DE4
 
-    DE4 --> D3
-    D3 --> M1
+    DE4 --> C4
 ```
 
 </details>
