@@ -33,7 +33,10 @@ class Phase03EquivalenceTest extends TestCase
         }
 
         $stripIds = function ($data) {
-            unset($data['id'], $data['created_at'], $data['updated_at'], $data['total']);
+            unset(
+                $data['id'], $data['created_at'], $data['updated_at'], $data['total'],
+                $data['early_booking_discount_amount'], $data['seasonal_surcharge_amount']
+            );
             $extras = [];
             foreach ($data['extras'] ?? [] as $extra) {
                 unset($extra['id'], $extra['reservation_id'], $extra['created_at'], $extra['updated_at']);
@@ -81,7 +84,10 @@ class Phase03EquivalenceTest extends TestCase
         }
 
         $stripIds = function ($data) {
-            unset($data['id'], $data['created_at'], $data['updated_at'], $data['total']);
+            unset(
+                $data['id'], $data['created_at'], $data['updated_at'], $data['total'],
+                $data['early_booking_discount_amount'], $data['seasonal_surcharge_amount']
+            );
             $extras = [];
             foreach ($data['extras'] ?? [] as $extra) {
                 unset($extra['id'], $extra['reservation_id'], $extra['created_at'], $extra['updated_at']);

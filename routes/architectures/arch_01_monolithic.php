@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Architectures\A01_MonolithicEloquent\Phase_01\Controllers\ReservationController as A01Phase01Controller;
 use App\Architectures\A01_MonolithicEloquent\Phase_02\Controllers\ReservationController as A01Phase02Controller;
 use App\Architectures\A01_MonolithicEloquent\Phase_03\Controllers\ReservationController as A01Phase03Controller;
+use App\Architectures\A01_MonolithicEloquent\Phase_04\Controllers\ReservationController as A01Phase04Controller;
 
 Route::prefix('arch_01/v1')->group(function () {
     Route::post('reservation', [A01Phase01Controller::class, 'store']);
@@ -19,4 +20,9 @@ Route::prefix('arch_01/v2')->group(function () {
 Route::prefix('arch_01/v3')->group(function () {
     Route::post('reservation', [A01Phase03Controller::class, 'store']);
     Route::get('reservation/{id}', [A01Phase03Controller::class, 'show']);
+});
+
+Route::prefix('arch_01/v4')->group(function () {
+    Route::post('reservation', [A01Phase04Controller::class, 'store']);
+    Route::get('reservation/{id}', [A01Phase04Controller::class, 'show']);
 });
