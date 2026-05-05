@@ -423,21 +423,6 @@ Los **equivalence tests** verifican que las 4 arquitecturas producen resultados 
 <details>
 <summary><strong>🔄 Diagramas de Flujo (ver más)</strong></summary>
 
-## Evolución de complejidad
-
-```mermaid
-flowchart LR
-
-    A01[Monolithic] --> A02[Repository]
-    A02 --> A03[Strategy]
-    A03 --> A04[Decorator]
-
-    style A01 fill:#3498db,color:#fff
-    style A02 fill:#2ecc71,color:#fff
-    style A03 fill:#e67e22,color:#fff
-    style A04 fill:#9b59b6,color:#fff
-```
-
 ## 🔵 A01 – Monolithic Eloquent
 
 ```mermaid
@@ -461,19 +446,14 @@ flowchart TD
 
     A[Request] --> C[Controller]
 
-    C --> S[ReservationService]
+    C --> V[Validate Request]
+    V --> Q[Load Models (Eloquent)]
+    Q --> L[Apply Business Rules]
+    L --> P[Calculate Total Price]
+    P --> S[Persist Reservation]
+    S --> F[Format Response]
 
-    S --> V[Validate Rules]
-    S --> R1[ReservationRepository]
-    S --> R2[ProductRepository]
-
-    R1 --> DB[(Database)]
-    R2 --> DB
-
-    S --> P[Price Calculation]
-    P --> SAVE[Persist Reservation]
-
-    SAVE --> RES[Response]
+    F --> R[Response]
 ```
 
 ## 🟠 A03 – Strategy Pattern
