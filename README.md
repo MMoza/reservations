@@ -1,11 +1,32 @@
 # 🏗 Arquitectura Comparada – Sistema de Reservas
 
-[![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?logo=php&logoColor=white)](https://www.php.net/)
-[![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?logo=laravel&logoColor=white)](https://laravel.com/)
-[![PHPUnit](https://img.shields.io/badge/PHPUnit-11.5-366488?logo=php&logoColor=white)](https://phpunit.de/)
-[![SQLite](https://img.shields.io/badge/SQLite-Database-003B57?logo=sqlite&logoColor=white)](https://www.sqlite.org/)
+<p align="center">
+  <a href="https://www.php.net/">
+    <img src="https://img.shields.io/badge/PHP-8.2-777BB4?logo=php&logoColor=white">
+  </a>
+  <a href="https://laravel.com/">
+    <img src="https://img.shields.io/badge/Laravel-12.x-FF2D20?logo=laravel&logoColor=white">
+  </a>
+  <a href="https://phpunit.de/">
+    <img src="https://img.shields.io/badge/PHPUnit-11.5-366488?logo=php&logoColor=white">
+  </a>
+  <a href="https://www.sqlite.org/">
+    <img src="https://img.shields.io/badge/SQLite-Database-003B57?logo=sqlite&logoColor=white">
+  </a>
+</p>
 
-> Laboratorio práctico para comparar cómo distintas decisiones arquitectónicas responden al mismo dominio funcional, con complejidad progresiva.
+<p align="center">
+  <img src="https://img.shields.io/badge/tests-passing-brightgreen">
+  <img src="https://img.shields.io/badge/status-learning-orange">
+  <img src="https://img.shields.io/badge/focus-architecture-blueviolet">
+</p>
+
+<p align="center">
+  <em>
+    Laboratorio práctico para comparar cómo distintas decisiones arquitectónicas 
+    responden al mismo dominio funcional, con complejidad progresiva.
+  </em>
+</p>
 
 ---
 
