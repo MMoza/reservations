@@ -430,13 +430,14 @@ flowchart TD
 
     A[Request] --> C[Controller]
 
-    C --> V[Validate Input]
-    V --> Q[Fetch Models - Eloquent]
-    Q --> L[Inline Business Logic]
-    L --> P[Price Calculation]
-    P --> S[Save Reservation]
+    C --> V[Validate Request]
+    V --> Q[Load Models  - Eloquent]
+    Q --> L[Apply Business Rules]
+    L --> P[Calculate Total Price]
+    P --> S[Persist Reservation]
+    S --> F[Format Response]
 
-    S --> R[Response]
+    F --> R[Response]
 ```
 
 ## 🟢 A02 – Repository Pattern
@@ -446,14 +447,19 @@ flowchart TD
 
     A[Request] --> C[Controller]
 
-    C --> V[Validate Request]
-    V --> Q[Load Models (Eloquent)]
-    Q --> L[Apply Business Rules]
-    L --> P[Calculate Total Price]
-    P --> S[Persist Reservation]
-    S --> F[Format Response]
+    C --> S[ReservationService]
 
-    F --> R[Response]
+    S --> V[Validate Rules]
+    S --> R1[ReservationRepository]
+    S --> R2[ProductRepository]
+
+    R1 --> DB[(Database)]
+    R2 --> DB
+
+    S --> P[Price Calculation]
+    P --> SAVE[Persist Reservation]
+
+    SAVE --> RES[Response]
 ```
 
 ## 🟠 A03 – Strategy Pattern
