@@ -552,41 +552,66 @@ flowchart TD
 ```mermaid
 flowchart TD
 
-    %% Top Row
+    %% A01
     subgraph A01 Monolithic
-        M1["Controller + Logic + DB"]
+        subgraph Monolithic Layer
+            M1["Controller + Logic + DB"]
+        end
     end
 
+    %% A02
     subgraph A02 Repository
-        C2[Controller]
-        S2[Service]
-        R2[Repository]
-        C2 --> S2 --> R2
+        subgraph Application
+            C2[Controller]
+            S2[Service]
+            C2 --> S2
+        end
+
+        subgraph Infrastructure
+            R2[Repository]
+        end
+
+        S2 --> R2
     end
 
-    %% Bottom Row
+    %% A03
     subgraph A03 Strategy
-        C3[Controller]
-        S3[Service]
-        ST3[Strategies]
-        C3 --> S3 --> ST3
+        subgraph Application
+            C3[Controller]
+            S3[Service]
+            C3 --> S3
+        end
+
+        subgraph Domain
+            ST3[Strategies]
+        end
+
+        S3 --> ST3
     end
 
+    %% A04
     subgraph A04 Decorator
-        C4[Controller]
-        S4[Service]
-        D4[Domain]
-        DE4[Decorators]
-        R3[Repository]
-        C4 --> S4 --> DE4 --> R3
+        subgraph Application
+            C4[Controller]
+            S4[Service]
+            C4 --> S4
+        end
+
+        subgraph Domain
+            DE4[Decorators]
+        end
+
+        subgraph Infrastructure
+            R3[Repository]
+        end
+
+        S4 --> DE4 --> R3
     end
 
-    %% Layout connections (square shape)
+    %% Evolución (forma cuadrada)
     M1 --> C2
-
     R2 --> C3
     ST3 --> DE4
-
     DE4 --> C4
 ```
 
