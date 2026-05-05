@@ -449,17 +449,18 @@ flowchart TD
 
     C --> S[ReservationService]
 
-    S --> V[Validate Rules]
+    S --> V[Validate Business Rules]
     S --> R1[ReservationRepository]
     S --> R2[ProductRepository]
 
     R1 --> DB[(Database)]
     R2 --> DB
 
-    S --> P[Price Calculation]
+    S --> P[Calculate Price]
     P --> SAVE[Persist Reservation]
 
-    SAVE --> RES[Response]
+    SAVE --> F[Build Response]
+    F --> RES[Response]
 ```
 
 ## 🟠 A03 – Strategy Pattern
