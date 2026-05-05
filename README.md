@@ -203,10 +203,10 @@ Durante el experimento se analizarán:
 
 | Arquitectura              | Phase 01 | Phase 02 | Phase 03 | Phase 04 |
 |---------------------------|----------|----------|----------|----------|
-| A01 Monolithic            | ✅       | ⬜       | ⬜       | ⬜       |
-| A02 Repository            | ✅       | ⬜       | ⬜       | ⬜       |
-| A03 Strategy              | ✅       | ⬜       | ⬜       | ⬜       |
-| A04 Decorator             | ✅       | ⬜       | ⬜       | ⬜       |
+| A01 Monolithic            | ✅       | ✅       | ⬜       | ⬜       |
+| A02 Repository            | ✅       | ✅       | ⬜       | ⬜       |
+| A03 Strategy              | ✅       | ✅       | ⬜       | ⬜       |
+| A04 Decorator             | ✅       | ✅       | ⬜       | ⬜       |
 
 ---
 
