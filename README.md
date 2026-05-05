@@ -431,7 +431,7 @@ flowchart TD
     A[Request] --> C[Controller]
 
     %% Monolithic Layer
-    subgraph Monolithic Layer (Everything Together)
+    subgraph Monolithic Layer - Everything Together
         C --> V[Validate Request]
         V --> Q[Load Models - Eloquent]
         Q --> L[Apply Business Rules]
